@@ -7,6 +7,7 @@ export default function ApplyForm() {
     fullname: '',
     email: '',
     rollno: '',
+    github: '',
     roles: [],
     questionOne: 'Any specific skill set that can be utilized in above selected domain(s)?',
     answerOne: '',
@@ -76,6 +77,7 @@ export default function ApplyForm() {
         email: form.email,
         rollno: form.rollno,
         roles: form.roles,
+        github: form.github,
         responses: [
           {
             question: form.questionOne,
@@ -112,6 +114,7 @@ export default function ApplyForm() {
       fullname: '',
       email: '',
       rollno: '',
+      github: '',
       roles: [],
       questionOne: 'Any specific skill set that can be utilized in above selected domain(s)?',
       answerOne: '',
@@ -177,6 +180,14 @@ export default function ApplyForm() {
                 <p className="text-red-500 pt-2 text-sm uppercase">{errors.rollno}</p>
               )}
             </div>
+            <input
+                type="text"
+                name="github"
+                value={form.github}
+                onChange={handleChange}
+                placeholder="Github Link (NOT MANDATORY)"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
           </div>
           {/* Roles and Skills container */}
           <div className="flex flex-col gap-4">
@@ -247,6 +258,17 @@ export default function ApplyForm() {
                 className="w-5 h-5"
               />
               <label htmlFor="Software Coordinator Role">Software Coordinator</label>
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                id="General Member Role"
+                name="General Member"
+                checked={form.roles.includes("General Member")}
+                onChange={handleRoleChange}
+                className="w-5 h-5"
+              />
+              <label htmlFor="General Member Role">General Member</label>
             </div>
             <span>{form.questionOne}</span>
             <textarea
